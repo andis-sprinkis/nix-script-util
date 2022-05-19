@@ -67,7 +67,7 @@ read_pw_input() {
   )"
 }
 
-# Prompt to confirm concealed password input
+# Prompt with user error handling for concealed password input
 
 confirm_pw_input() {
   prefix_usr_input_err="User input error -"
@@ -96,4 +96,16 @@ confirm_pw_input() {
 
   password_1="" password_2=""
   return 0
+}
+
+# Prompt based on confirm_pw_input to update user password
+
+set_user_pw_confirm() {
+  echo "Set the password for user $1."
+
+  confirm_pw_input
+  (echo "$PW_INPUT"; echo "$PW_INPUT") | passwd $1
+  PW_INPUT=""
+
+  echo_br_both "Password for user $1 has been set."
 }
