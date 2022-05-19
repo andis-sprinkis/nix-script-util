@@ -30,6 +30,7 @@ fn_call() {
   done
 }
 
+# Credit: Stéphane Chazelas - https://unix.stackexchange.com/a/223000
 read_pw() {
   REPLY="$(
     # always read from the tty even when redirected:
