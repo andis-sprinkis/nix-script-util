@@ -74,7 +74,7 @@ confirm_pw_input() {
   read_pw_input && password_1=$PW_INPUT
 
   if [ -z "$password_1" ]; then
-    password_1="" password_2=""
+    password_1="" password_2="" PW_INPUT=""
     echo_br_top "$prefix_usr_input_err password must not be empty."
     confirm_pw_input $1 && return 0; return 1
   fi
@@ -83,18 +83,18 @@ confirm_pw_input() {
   read_pw_input && password_2=$PW_INPUT
 
   if [ -z "$password_2" ]; then
-    password_1="" password_2=""
+    password_1="" password_2="" PW_INPUT=""
     echo_br_top "$prefix_usr_input_err password must not be empty."
     confirm_pw_input $1 && return 0; return 1
   fi
 
   if [ ! "$password_1" == "$password_2" ]; then
-    password_1="" password_2=""
+    password_1="" password_2="" PW_INPUT=""
     echo_br_top "$prefix_usr_input_err passwords must match."
     confirm_pw_input $1 && return 0; return 1
   fi
 
-  password_1="" password_2=""
+  password_1="" password_2="" PW_INPUT=""
   return 0
 }
 
